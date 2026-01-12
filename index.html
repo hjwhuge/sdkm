@@ -89,14 +89,14 @@
 						if(data.code==200){
 							localStorage.setItem('token', data.token)
 							mui.toast('登录成功')
-							mui.openWindow('./ym/sdkm-sy.html')
+							mui.openWindow('./pages/sy/index.html')
 						}else{
 							mui.toast('账号或密码错误')
 						}
 					}
 				})
 			}else{
-				mui.openWindow('./ym/dl-ysxq.html','dl-ysxq',null)
+				mui.openWindow('./pages/ysxq.html','ysxq',null)
 			}
 			
 		})

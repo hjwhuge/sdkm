@@ -1,0 +1,143 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<style type="text/css">
+			.mui-segmented-control.mui-segmented-control-inverted .mui-control-item.mui-active{
+				color: red;
+				border-bottom: 1px solid red;
+			}
+			.qbhd{
+				width: 95%;
+				height: 350px;
+				margin: 10px auto;
+				border-radius: 10px;
+				background-color: #fff;
+				
+			}
+			.wz{
+				padding: 10px;
+				border-bottom: 1px solid #ccc;
+			}
+			.mui-bar-tab .mui-tab-item.mui-active{
+				color: red;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav" style="background-color: #fff;">
+			<h1 class="mui-title">公益活动</h1>
+		</header>
+		<div class="mui-content">
+			<div class="mui-segmented-control mui-segmented-control-inverted" style="background-color: #fff;">
+				<a class="mui-control-item mui-active" href="#item1">全部活动</a>
+				<a class="mui-control-item" href="#item2">已报名</a>
+			</div>
+			<div>
+				<div id="item1" class="mui-control-content mui-active">
+					<div class="qbhd" id="one" style="margin-top: 20px;">
+						
+					</div>
+				</div>
+				<div id="item2" class="mui-control-content">
+					<div class="qbhd ybmhd" id="two" style="margin-top: 20px;">
+						
+					</div>
+				</div>
+			</div>
+			<nav class="mui-bar mui-bar-tab">
+				<a class="mui-tab-item " href="../sy/index.html">
+					<span class="mui-icon mui-icon-home"></span>
+					<span class="mui-tab-label">首页</span>
+				</a>
+				<a class="mui-tab-item mui-active" href="index.html">
+					<span class="mui-icon mui-icon-phone" ></span>
+					<span class="mui-tab-label">公益活动</span>
+				</a>
+				<a class="mui-tab-item" href="../xd/index.html">
+					<span class="mui-icon mui-icon-email"></span>
+					<span class="mui-tab-label">心得</span>
+				</a>
+				<a class="mui-tab-item " href="../sjfx/index.html">
+					<span class="mui-icon mui-icon-gear"></span>
+					<span class="mui-tab-label">数据分析</span>
+				</a>
+				<a class="mui-tab-item">
+					<span class="mui-icon mui-icon-gear"></span>
+					<span  class="mui-tab-label">我的</span>
+				</a>
+			</nav>
+		</div>
+		<script src="../../js/mui.min.js"></script>
+		<script src="../../js/request.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			mui.init()
+			mui('body').on('tap','a',function(){
+				document.location.href=this.href
+			})
+			var ip=localStorage.getItem('ip')
+			
+			// 获取全部活动数据
+			var one=document.getElementById("one")
+			// status： 1：报名中；2：报名截止；3：已报名
+			request.get(ip+'/activity/app-o/list',{
+				success:function(data){
+					for(var i=0;i<data.total;i++){
+						var html=`
+							<div style="background-color: #fff;margin-top:50px;">
+							<img src="${ip+data.rows[i].picPath}" style="width: 100%;height: 150px;border-radius: 10px;">
+							<div class="wz">
+								<h4>${data.rows[i].title}</h4>
+								<p>日期：${data.rows[i].startDate}~${data.rows[i].startDate}</p>
+								<p>发起方：${data.rows[i].sponsor}</p>
+								<p class="mui-ellipsis">简介：${data.rows[i].content}</p>
+							</div>
+							<div class="">
+								<img src="../../img/bm.png" style="vertical-align: middle;margin-top: 5px;margin-left: 10px;" >
+								<p style="display: inline-block;margin-top: 10px;">已报名12138人</p>
+								<button onclick="GoDetails(${data.rows[i].id})" type="button" class="mui-btn mui-btn-red" style="float:right;width: 70px;height: 30px;background-color: red;border-radius:20px ;margin-top: 10px;">去报名</button>
+							</div>
+							</div>
+						`
+						one.innerHTML+=html
+					}
+				}
+			})
+			
+			// 获取已报名活动数据
+			var two=document.getElementById("two")
+			request.get(ip+'/activity/app/list',{
+				success:function(data){
+					for(var i=0;i<data.total;i++){
+						var html=`
+							<div style="background-color: #fff;margin-top:50px;">
+								<img src="${ip+data.rows[i].picPath}" style="width: 100%;height: 150px;border-radius: 10px;">
+								<div class="wz">
+									<h4>${data.rows[i].title}</h4>
+									<p>日期：${data.rows[i].startDate}~${data.rows[i].startDate}</p>
+									<p>发起方：${data.rows[i].sponsor}</p>
+									<p class="mui-ellipsis">简介：${data.rows[i].content}</p>
+								</div>
+								<div class="">
+									<img src="../../img/bm.png" style="vertical-align: middle;margin-top: 5px;margin-left: 10px;" >
+									<p style="display: inline-block;margin-top: 10px;">已报名12138人</p>
+									<button onclick="GoDetails(${data.rows[i].id})" type="button" class="mui-btn mui-btn-red" style="float:right;width: 70px;height: 30px;background-color: red;border-radius:20px ;margin-top: 10px;">去报名</button>
+								</div>
+							</div>
+						`
+						two.innerHTML+=html
+					}
+				}
+			})
+			function GoDetails(w){
+				mui.openWindow('hdxq.html?id='+w,'hdxq')
+			}
+		</script>
+	</body>
+
+</html>

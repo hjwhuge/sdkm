@@ -5,7 +5,7 @@
 		<meta charset="utf-8">
 		<title></title>
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
-		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link href="../../css/mui.min.css" rel="stylesheet" />
 		<style type="text/css">
 			.kmlb{
 				width: 95%;
@@ -61,7 +61,6 @@
 		<div class="mui-content">
 			<div class="box-hidden" id="two">
 				
-			
 			</div>
 			<ul class="kmlb "  id="lb">
 				
@@ -69,15 +68,12 @@
 			<span id="biao" class="mui-icon mui-icon-arrowthinup" style="position: fixed;bottom: 50px;right: 20px;padding: 10px;border-radius: 30px;background-color: red;color: #fff;opacity: 0;" ></span>
 			
 		</div>
-		<script src="../js/mui.min.js"></script>
-		<script src="../js/request.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/mui.min.js"></script>
+		<script src="../../js/request.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript">
 			mui.init()
-			var url=window.location.search
-			var id=url.substr(url.indexOf('=')+1)
-			localStorage.setItem('ip','http://192.168.0.18:8080/times-model')
 			var ip=localStorage.getItem('ip')
-			request.get(ip+'/appModel/app-o/list?id='+id,{
+			request.get(ip+'/appModel/app-o/list',{
 				success:function(data){
 					console.log(data)
 					var lb=document.getElementById("lb")
@@ -121,20 +117,18 @@
 					var two=document.getElementById("two")
 					for(var i=0;i<data.total;i++){
 						two.innerHTML+=`
-					<div class="no2" onclick="lbxq(${data.rows[i].id})">
-						<div class="content2">
-							<img src="${ip}${data.rows[i].picPath}" >
-						<div class="wz">
-							<h4 class="mui-ellipsis-2">${data.rows[i].title}</h4>
-							<p>楷模姓名:${data.rows[i].modelName}</p>
-							<p style="overflow: hidden;height:100px;">${data.rows[i].content}</p>
-						</div>
-						
-						</div>
-					</div>
-					
-					
-					`
+							<div class="no2" onclick="lbxq(${data.rows[i].id})">
+								<div class="content2">
+									<img src="${ip}${data.rows[i].picPath}" >
+								<div class="wz">
+									<h4 class="mui-ellipsis-2">${data.rows[i].title}</h4>
+									<p>楷模姓名:${data.rows[i].modelName}</p>
+									<p style="overflow: hidden;height:100px;">${data.rows[i].content}</p>
+								</div>
+								
+								</div>
+							</div>
+						`
 					}
 					
 				}
@@ -146,7 +140,7 @@
 				two.classList.toggle('box-hidden')
 			})
 			function lbxq(e){
-				mui.openWindow('sdkm-kmxq.html?id='+e,'lbxq')
+				mui.openWindow('kmxq.html?id='+e,'lbxq')
 			};
 			console.log(window)
 			var biao=document.getElementById("biao")

@@ -6,7 +6,7 @@
 		<title></title>
 		<meta name="viewport"
 			content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
-		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link href="../../css/mui.min.css" rel="stylesheet" />
 		<style type="text/css">
 			img {
 				width: 400px;
@@ -169,38 +169,38 @@
 				</div>
 				<ul class="jgg">
 					<li>
-						<a href="sdkm-qbxw.html">
-							<span><img src="../img/kmlb.png"></span>
+						<a href="qbxw.html">
+							<span><img src="../../img/kmlb.png"></span>
 							<span style="color: red;">楷模列表</span>
 						</a>
 					</li>
 					<li>
 						<a href="#">
-							<span><img src="../img/yxgs.png"></span>
+							<span><img src="../../img/yxgs.png"></span>
 							<span>英雄故事</span>
 						</a>
 					</li>
 					<li>
 						<a href="#">
-							<span><img src="../img/sbyx.png"></span>
+							<span><img src="../../img/sbyx.png"></span>
 							<span>身边英雄</span>
 						</a>
 					</li>
 					<li>
 						<a href="#">
-							<span><img src="../img/wzjz.png"></span>
+							<span><img src="../../img/wzjz.png"></span>
 							<span>物资捐赠</span>
 						</a>
 					</li>
 					<li>
 						<a href="#">
-							<span><img src="../img/qzxq.png"></span>
+							<span><img src="../../img/qzxq.png"></span>
 							<span>群众需求</span>
 						</a>
 					</li>
 					<li>
 						<a href="jgg-gd.html">
-							<span><img src="../img/more.png"></span>
+							<span><img src="../../img/more.png"></span>
 							<span>更多</span>
 						</a>
 
@@ -208,7 +208,7 @@
 				</ul>
 				<div class="nav">
 					<h3>楷模新闻</h3>
-					<a href="sdkm-qbxw.html">更多新闻></a>
+					<a href="qbxw.html">更多新闻></a>
 				</div>
 				<ul id="kmlb" style="padding: 0;margin-bottom: 53px;">
 
@@ -220,19 +220,19 @@
 			</div>
 		</div>
 		<nav class="mui-bar mui-bar-tab">
-			<a class="mui-tab-item mui-active" href="../ym/sdkm-sy.html">
+			<a class="mui-tab-item mui-active" href="index.html">
 				<span class="mui-icon mui-icon-home"></span>
 				<span class="mui-tab-label">首页</span>
 			</a>
-			<a class="mui-tab-item" href="../ym2/gy.html">
+			<a class="mui-tab-item" href="../gyhd/index.html">
 				<span class="mui-icon mui-icon-phone"></span>
 				<span class="mui-tab-label">公益活动</span>
 			</a>
-			<a class="mui-tab-item" href="xd-gy.html">
+			<a class="mui-tab-item" href="../xd/index.html">
 				<span class="mui-icon mui-icon-email"></span>
 				<span class="mui-tab-label">心得</span>
 			</a>
-			<a class="mui-tab-item " href="数据分析.html">
+			<a class="mui-tab-item " href="../sjfx/index.html">
 				<span class="mui-icon mui-icon-gear"></span>
 				<span class="mui-tab-label">数据分析</span>
 			</a>
@@ -241,8 +241,8 @@
 				<span class="mui-tab-label">我的</span>
 			</a>
 		</nav>
-		<script src="../js/mui.min.js"></script>
-		<script src="../js/request.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/mui.min.js"></script>
+		<script src="../../js/request.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript">
 			var ip = localStorage.getItem('ip')
 
@@ -317,7 +317,7 @@
 					}
 				})
 			}
-			console.log(window.pageYOffset)
+			// console.log(window.pageYOffset)
 			
 			// 底部tab栏切换
 			mui('body').on('tap', 'a', function() {
@@ -326,7 +326,7 @@
 			
 			// 获取轮播图数据
 			var slider = document.querySelector(".mui-slider-group")
-			console.log(slider)
+			// console.log(slider)
 			request.get(ip + '/appNotice/app-o/loopMap', {
 				success: function(data) {
 					var picArr = data.data;
@@ -336,7 +336,7 @@
 						picArr.push(firstPic)
 						picArr.unshift(lastPic)
 					}
-					console.log(picArr)
+					// console.log(picArr)
 					for (var i = 0; i < picArr.length; i++) {
 						var html = `
 							<div class="mui-slider-item">
@@ -416,7 +416,8 @@
 			})
 			// 点击列表跳转详情
 			function lbxq(e) {
-				mui.openWindow('sdkm-kmxq.html?id=' + e, 's')
+				console.log(e,777)
+				mui.openWindow('kmxq.html?id=' + e, 's')
 			};
 			// 回到顶部按钮
 			var biao = document.getElementById("biao")
