@@ -1,0 +1,170 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.css" rel="stylesheet" />
+		<style type="text/css">
+			.echart{
+				height: 300px;
+				margin: 0;
+				padding: 0;
+				background-color: #fff;
+				width: 90%;
+				margin: 0px auto;
+				
+			}
+			.mui-bar-tab .mui-tab-item.mui-active{
+				color: red;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav" style="background-color: #fff;">
+			<h1 class="mui-title" style="color: red;">时代楷模</h1>
+		</header>
+		<div class="mui-content">
+			<div id="bar" class="echart" style="margin-top: 10px;"></div>
+			<div id="bar2" class="echart"></div>
+		</div>
+		<nav class="mui-bar mui-bar-tab">
+			<a class="mui-tab-item " href="../ym/sdkm-sy.html">
+				<span class="mui-icon mui-icon-home"></span>
+				<span class="mui-tab-label">首页</span>
+			</a>
+			<a class="mui-tab-item" href="gy.html">
+				<span class="mui-icon mui-icon-phone" ></span>
+				<span class="mui-tab-label">公益活动</span>
+			</a>
+			<a class="mui-tab-item" href="xd-gy.html">
+				<span class="mui-icon mui-icon-email"></span>
+				<span class="mui-tab-label">心得</span>
+			</a>
+			<a class="mui-tab-item mui-active" href="数据分析.html">
+				<span class="mui-icon mui-icon-gear"></span>
+				<span class="mui-tab-label">数据分析</span>
+			</a>
+			<a class="mui-tab-item">
+				<span class="mui-icon mui-icon-gear"></span>
+				<span class="mui-tab-label">我的</span>
+			</a>
+		</nav>
+		<script src="../js/mui.min.js"></script>
+		<script src="../libs/echarts.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			mui.init()
+			mui('body').on('tap','a',function(){
+				document.location.href=this.href
+			})
+			var bar=echarts.init(document.getElementById("bar"))
+			var bar2=echarts.init(document.getElementById("bar2"))
+			var zhu={
+				legend:{
+					orient:'horizontal'
+				},
+				dataset:{
+					source:[
+						['','女','男'],
+						['2022年2月',120,100],
+						['2022年6月',200,150]
+					]
+				},
+				xAxis:{
+					type:'category',
+					axisLine:{
+						show:true,
+						lineStyle:{
+							color:'skyblue',
+							width:2
+						}
+					},
+					axisLabel:{
+						show:true,
+						textStyle:{
+							color:'#ccc',
+							width:2
+						}
+					}
+				},
+				yAxis:{
+					
+					axisLabel:{
+						show:true,
+						textStyle:{
+							color:'#ccc',
+							width:2
+						}
+					}
+				},
+				series:[{
+					type:'bar',
+					itemStlye:{
+						color:'#pink'
+					}
+				},
+				{
+					type:'bar',
+					itemStlye:{
+						color:'#pink'
+					}
+				}]
+			}
+			bar.setOption(zhu)
+			var zhu={
+				legend:{
+					orient:'horizontal'
+				},
+				dataset:{
+					source:[
+						['','男','女'],
+						['植树造林活动-4',700,550],
+						['"为爱动画"-5',220,500]
+					]
+				},
+				xAxis:{
+					type:'category',
+					axisLine:{
+						show:true,
+						lineStyle:{
+							color:'skyblue',
+							width:2
+						}
+					},
+					axisLabel:{
+						show:true,
+						textStyle:{
+							color:'#ccc',
+							width:2
+						}
+					}
+				},
+				yAxis:{
+					axisLabel:{
+						show:true,
+						textStyle:{
+							color:'#ccc',
+							width:2
+						}
+					}
+				},
+				series:[{
+					type:'bar',
+					itemStlye:{
+						color:'#pink'
+					}
+				},
+				{
+					type:'bar',
+					itemStlye:{
+						color:'#pink'
+					}
+				}]
+			}
+			bar2.setOption(zhu)
+		</script>
+	</body>
+
+</html>

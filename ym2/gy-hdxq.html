@@ -1,0 +1,126 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<style type="text/css">
+			.top{
+				width: 100%;
+				height: 500px;
+				background-color: #fff;
+				margin: 0 auto;
+			}
+			.bottom{
+				width: 100%;
+				height: 500px;
+				background-color: #fff;
+				margin-top: 70px;
+				
+			}
+			.nav{
+				width: 100%;
+				height: 30px;
+				
+				margin-left: 10px;
+				margin-top: 10px;
+			}
+			.nav h4{
+				float: left;
+				font-size: 18px;
+				padding-left: 10px;
+				border-left: 2px solid red;
+				line-height: 30px;
+				height: 30px;
+			}
+			.bom{
+				width: 100%;
+				height: 50px;
+				position: fixed;
+				bottom: 10px;
+			}
+			.left{
+				float: left;
+				width: 60%;
+				height: 50px;
+				background-color: #ccc;
+				margin: 0;
+				line-height: 50px;
+				text-align: center;
+			}
+			.right{
+				float: right;
+				width: 40%;
+				height: 50px;
+				background-color: red;
+				margin: 0;
+				color: #fff;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav" style="background-color: #fff;">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" style="color: red;"></a>
+			<h1 class="mui-title">活动详情</h1>
+		</header>
+		<div class="mui-content">
+				<div id="top">
+					
+				</div>
+				<div class="bom">
+					<div class="left">
+						<span id="num" style="color: red;">12234</span>人已报名
+					</div>
+					<button type="button" id="ci" class="mui-btn right mui-btn-block">报名</button>
+				</div>
+		</div>
+		<script src="../js/mui.min.js"></script>
+		<script src="../js/request.js" type="text/javascript" charset="utf-8"></script>
+		<script src="" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			mui.init()
+			var ip=localStorage.getItem('ip')
+			var url=window.location.search
+			var id=url.substr(url.indexOf('=')+1)
+			
+			request.get(ip+'/activity/app-o/detail?id='+id,{
+				success:function(data){
+					console.log(data)
+						var html=`
+							<div class="top">
+									<img src="${ip+data.data.picPath}"style="width: 100%;height: 250px;" >
+									<div class="wz" style="padding: 10px;margin-top: 20px;">
+										<h4>${data.data.title}</h4>
+										<p>活动时间：${data.data.startDate}</p>
+										<p>活动截至时间：${data.data.endDate}</p>
+										<p>发起方：${data.data.sponsor}</p>
+									</div>
+								
+							</div>
+							<div class="bottom">
+								<div class="nav">
+									<h4>活动详情</h4>	
+								</div>
+								<div style="padding: 20px;">
+									<div style="margin-top: 40px;">内容</div>
+								</div>
+							</div>
+						`
+						document.getElementById("top").innerHTML+=html
+						
+				}
+			})
+			var num=document.getElementById("num")
+			var ci=document.getElementById("ci")
+			ci.addEventListener('click',function(){
+				ci.disabled=true
+				mui.toast('报名成功!')
+				num.innerHTML=`12235`
+			})
+		</script>
+	</body>
+
+</html>

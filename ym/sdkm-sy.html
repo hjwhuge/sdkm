@@ -1,0 +1,448 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport"
+			content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<style type="text/css">
+			img {
+				width: 400px;
+				height: 300px;
+			}
+
+			.kmgg {
+				display: flex;
+				width: 95%;
+				height: 90px;
+				background-color: #fff;
+				margin: 10px auto;
+				border-radius: 10px;
+				padding: 10px;
+
+			}
+
+			.left {
+				width: 20%;
+				border-right: 2px solid #ccc;
+				margin-right: 10px;
+
+				padding-left: 10px;
+			}
+
+			.wz {
+				width: 70%;
+			}
+
+			.jgg {
+				display: flex;
+				flex-wrap: wrap;
+				width: 95%;
+				margin: 10px auto;
+				height: 180px;
+				padding: 0;
+				background-color: #fff;
+				border-radius: 10px;
+			}
+
+			.jgg li {
+				list-style: none;
+				margin-top: 10px;
+				flex: 30%;
+			}
+
+			.jgg a {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				color: #000000;
+			}
+
+			.jgg img {
+				width: 50px;
+				height: 50px;
+
+			}
+
+			.jgg span {
+				font-size: :;
+				px;
+			}
+
+			.nav {
+				width: 95%;
+				height: 30px;
+				line-height: 30px;
+				margin: 10px auto;
+			}
+
+			.nav h3 {
+				float: left;
+				font-size: 18px;
+				border-left: 2px solid red;
+				padding-right: 10px;
+				padding-left: 10px;
+			}
+
+			.nav a {
+				color: #ccc;
+				float: right;
+				font-size: 14px;
+			}
+
+			.mui-scroll-wrapper {
+				overflow: auto;
+			}
+
+			.ba {
+				position: fixed;
+				bottom: 60px;
+				right: 30px;
+				width: 50px;
+				height: 50px;
+				line-height: 50px;
+				background-color: red;
+				color: #fff;
+				border-radius: 30px;
+				text-align: center;
+			}
+
+			.mui-bar-tab .mui-tab-item.mui-active {
+				color: red;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<h1 class="mui-title" style="color: red;">时代楷模</h1>
+		</header>
+
+		<div class="mui-content ">
+			<div class="">
+				<marquee style="height: 30px;line-height: 30px;background-color: red;color: #fff;">学习雷锋同志，弘扬雷锋精神
+				</marquee>
+				<div id="slider" class="mui-slider" style="top: -5px;">
+					<div class="mui-slider-group mui-slider-loop">
+						<!-- 额外增加的一个节点(循环轮播：第一个节点是最后一张轮播)
+						<div class="mui-slider-item mui-slider-item-duplicate">
+							<a href="#">
+								<img src="../img/file_20220601102701A003.png">
+							</a>
+						</div>
+						第一张
+						<div class="mui-slider-item">
+							<a href="#">
+								<img src="../img/file_20220601101434A001.png">
+							</a>
+						</div>
+						第二张
+						<div class="mui-slider-item">
+							<a href="#">
+								<img src="../img/file_20220601102528A002.png">
+							</a>
+						</div>
+						第三张
+						<div class="mui-slider-item">
+							<a href="#">
+								<img src="../img/file_20220601102701A003.png">
+							</a>
+						</div>
+						额外增加的一个节点(循环轮播：最后一个节点是第一张轮播)
+						<div class="mui-slider-item mui-slider-item-duplicate">
+							<a href="#">
+								<img src="../img/file_20220601101434A001.png">
+							</a>
+						</div> -->
+					</div>
+					<div class="mui-slider-indicator">
+						<div class="mui-indicator mui-active"></div>
+						<div class="mui-indicator"></div>
+						<div class="mui-indicator"></div>
+
+					</div>
+				</div>
+				<div class="kmgg" id="kmgg">
+
+				</div>
+				<ul class="jgg">
+					<li>
+						<a href="sdkm-qbxw.html">
+							<span><img src="../img/kmlb.png"></span>
+							<span style="color: red;">楷模列表</span>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<span><img src="../img/yxgs.png"></span>
+							<span>英雄故事</span>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<span><img src="../img/sbyx.png"></span>
+							<span>身边英雄</span>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<span><img src="../img/wzjz.png"></span>
+							<span>物资捐赠</span>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<span><img src="../img/qzxq.png"></span>
+							<span>群众需求</span>
+						</a>
+					</li>
+					<li>
+						<a href="jgg-gd.html">
+							<span><img src="../img/more.png"></span>
+							<span>更多</span>
+						</a>
+
+					</li>
+				</ul>
+				<div class="nav">
+					<h3>楷模新闻</h3>
+					<a href="sdkm-qbxw.html">更多新闻></a>
+				</div>
+				<ul id="kmlb" style="padding: 0;margin-bottom: 53px;">
+
+				</ul>
+
+				<div class="mui-icon mui-icon-arrowthinup ba" id="biao" style="opacity: 0;">
+
+				</div>
+			</div>
+		</div>
+		<nav class="mui-bar mui-bar-tab">
+			<a class="mui-tab-item mui-active" href="../ym/sdkm-sy.html">
+				<span class="mui-icon mui-icon-home"></span>
+				<span class="mui-tab-label">首页</span>
+			</a>
+			<a class="mui-tab-item" href="../ym2/gy.html">
+				<span class="mui-icon mui-icon-phone"></span>
+				<span class="mui-tab-label">公益活动</span>
+			</a>
+			<a class="mui-tab-item" href="xd-gy.html">
+				<span class="mui-icon mui-icon-email"></span>
+				<span class="mui-tab-label">心得</span>
+			</a>
+			<a class="mui-tab-item " href="数据分析.html">
+				<span class="mui-icon mui-icon-gear"></span>
+				<span class="mui-tab-label">数据分析</span>
+			</a>
+			<a class="mui-tab-item">
+				<span class="mui-icon mui-icon-gear"></span>
+				<span class="mui-tab-label">我的</span>
+			</a>
+		</nav>
+		<script src="../js/mui.min.js"></script>
+		<script src="../js/request.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var ip = localStorage.getItem('ip')
+
+			mui.init({
+				pullRefresh: {
+					container: ".mui-content",
+					// 上拉加载
+					up: {
+						contentrefresh: "正在加载...",
+						contentnomore: '没有更多数据了',
+						callback: jiazai
+					},
+					// 下拉刷新
+					down: {
+						style: 'circle',
+						callback: shuaxin
+					}
+				}
+			})
+
+			function shuaxin() {
+				setTimeout(function() {
+					mui.toast('刷新完毕');
+					mui(".mui-content").pullRefresh().endPulldownToRefresh();
+					location.reload();
+				}, 500)
+			}
+			// 上拉加载
+			var num = 0;
+
+			function jiazai() {
+				num++;
+				request.get(ip + '/appModel/app-o/list', {
+					success: function(data) {
+						for (var i = 5 * num; i < 5 * (num + 1); i++) {
+							if (i <= data.total) {
+								if (i % 2 == 0) {
+									var html2 = `
+										<li  class="mui-table-view-cell mui-media dd" style="border-radius: 10px;width: 95%;background-color: #fff;margin: 10px auto;" onclick="lbxq(${data.rows[i].id})">
+											<a href="javascript:;">
+												<img class="mui-media-object mui-pull-left" src="${ip+data.rows[i].picPath}" style="width: 90px;height: 90px;margin-right: 10px;">
+												<div class="mui-media-body">
+													${data.rows[i].title}
+													<p style="margin: 10px 0;">楷模姓名：${data.rows[i].modelName}</p>
+													<p class="mui-ellipsis-2">${data.rows[i].content}</p>
+												</div>
+											</a>
+										</li>
+										`
+									kmlb.innerHTML += html2
+								} else {
+									var html2 = `
+										<li class="mui-table-view-cell mui-media dd" style="border-radius: 10px;width: 95%;background-color: #fff;margin: 10px auto;" onclick="lbxq(${data.rows[i].id})">
+											<a href="javascript:;">
+												<img class="mui-media-object mui-pull-right" src="${ip+data.rows[i].picPath}" style="width: 90px;height: 90px;margin-right: 10px;">
+												<div class="mui-media-body">
+													${data.rows[i].title}
+													<p style="margin: 10px 0;">楷模姓名：${data.rows[i].modelName}</p>
+													<p class="mui-ellipsis-2">${data.rows[i].content}</p>
+												</div>
+											</a>
+										</li>
+										`
+									kmlb.innerHTML += html2
+								}
+								mui('.mui-content').pullRefresh().endPullupToRefresh(false);
+							} else {
+								console.log(111);
+								mui('.mui-content').pullRefresh().endPullupToRefresh(true);
+							}
+						}
+					}
+				})
+			}
+			console.log(window.pageYOffset)
+			
+			// 底部tab栏切换
+			mui('body').on('tap', 'a', function() {
+				document.location.href = this.href
+			})
+			
+			// 获取轮播图数据
+			var slider = document.querySelector(".mui-slider-group")
+			console.log(slider)
+			request.get(ip + '/appNotice/app-o/loopMap', {
+				success: function(data) {
+					var picArr = data.data;
+					if(picArr.length > 1) {
+						var firstPic = picArr[0]
+						var lastPic = picArr[picArr.length - 1]
+						picArr.push(firstPic)
+						picArr.unshift(lastPic)
+					}
+					console.log(picArr)
+					for (var i = 0; i < picArr.length; i++) {
+						var html = `
+							<div class="mui-slider-item">
+								<a href="#">
+									<img src="${ip + picArr[i].picPath}">
+								</a>
+							</div>
+						`
+						slider.innerHTML += html
+					}
+					
+													
+					var lunb = mui('#slider')
+					lunb.slider({
+						interval: 1000
+					})
+					
+				}
+			})
+						
+			// 获取楷模公告数据
+			var kmgg = document.getElementById("kmgg")
+			request.get(ip + '/appNotice/app-o/modelNotice', {
+				success: function(data) {
+					for (var i = 0; i < 1; i++) {
+						var html = `
+							<div class="left">
+								<h3 style="color: red;">楷模</h3>
+								<h3>公告</h3>
+							</div>
+							<div class="wz">
+								<h4>${data.data[i].title}</h4>
+								<p class="mui-ellipsis-2">${data.data[i].content}</p>
+							</div>
+						`
+						kmgg.innerHTML += html
+					}
+				}
+			})
+			
+			// 获取楷模新闻数据
+			var kmlb = document.getElementById("kmlb")
+			request.get(ip + '/appModel/app-o/list', {
+				success: function(data) {
+					for (var i = 0; i < 5; i++) {
+						if (i % 2 == 0) {
+							var html2 = `
+								<li  class="mui-table-view-cell mui-media dd" style="border-radius: 10px;width: 95%;background-color: #fff;margin: 10px auto;" onclick="lbxq(${data.rows[i].id})">
+									<a href="javascript:;">
+										<img class="mui-media-object mui-pull-left" src="${ip+data.rows[i].picPath}" style="width: 90px;height: 90px;margin-right: 10px;">
+										<div class="mui-media-body">
+											${data.rows[i].title}
+											<p style="margin: 10px 0;">楷模姓名：${data.rows[i].modelName}</p>
+											<p class="mui-ellipsis-2">${data.rows[i].content}</p>
+										</div>
+									</a>
+								</li>
+								`
+							kmlb.innerHTML += html2
+						} else {
+							var html2 = `
+								<li class="mui-table-view-cell mui-media dd" style="border-radius: 10px;width: 95%;background-color: #fff;margin: 10px auto;" onclick="lbxq(${data.rows[i].id})">
+									<a href="javascript:;">
+										<img class="mui-media-object mui-pull-right" src="${ip+data.rows[i].picPath}" style="width: 90px;height: 90px;margin-right: 10px;">
+										<div class="mui-media-body">
+											${data.rows[i].title}
+											<p style="margin: 10px 0;">楷模姓名：${data.rows[i].modelName}</p>
+											<p class="mui-ellipsis-2">${data.rows[i].content}</p>
+										</div>
+									</a>
+								</li>
+								`
+							kmlb.innerHTML += html2
+						}
+					}
+				}
+			})
+			// 点击列表跳转详情
+			function lbxq(e) {
+				mui.openWindow('sdkm-kmxq.html?id=' + e, 's')
+			};
+			// 回到顶部按钮
+			var biao = document.getElementById("biao")
+			window.addEventListener('scroll', function() {
+				if (window.pageYOffset >= 1000) {
+					biao.style.opacity = 0.4
+				}
+				if (window.pageYOffset >= 4000) {
+					biao.style.opacity = 0.6
+				}
+
+				if (window.pageYOffset >= 6244) {
+					biao.style.opacity = 1
+				}
+				if (window.pageYOffset == 0) {
+					biao.style.opacity = 0
+				}
+			})
+			biao.addEventListener('click', function() {
+				window.scroll({
+					top: 0,
+					behavior: 'smooth'
+				})
+
+			})
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<style type="text/css">
+			
+			.video video{
+				display: block;
+				width: 100%;
+				margin: 0 auto;
+			}
+			.box-hidden{
+				display: none;
+			}
+		</style>
+	</head>
+
+	<body style="background-color: #fff;height: 2000px;">
+		<header class="mui-bar mui-bar-nav" style="background-color: #fff;">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" style="color: #000000;"></a>
+			<h1 class="mui-title" style="color: #000000;">楷模详情</h1>
+		</header>
+		<div class="mui-content" style="background-color: #fff;">
+			<div class="content" id="content">
+				
+			</div>
+			<div id="video" class="box-hidden">
+				
+			</div>
+		</div>
+		<script src="../js/mui.min.js"></script>
+		<script src="../js/request.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			mui.init()
+			var url=window.location.search
+			var id=url.substr(url.indexOf('=')+1)
+			var ip=localStorage.getItem('ip');
+			request.get(ip+'/appModel/app-o/detail?id='+id,{
+				success:function(data){
+					console.log(data)
+						var html=`
+					<div style="margin-left: 20px;">${data.data.title}</div>
+					<div class="video" >
+						<video src="${ip}${data.data.videoPath}" id="sp" controls  autoplay></video>
+						<p style="text-align: center;margin-bottom:100px;">时代楷模：${data.data.modelName}</p>
+						
+					</div>
+					<div class="wz">
+						<p style="text-indent: 2em;font-size:15px;color:#000;letter-spacing: 1px">${data.data.content}</p>
+						
+					</div>					
+					`
+					document.getElementById("content").innerHTML+=html
+					var html2=`
+					<video width="200px" height=""  controls autoplay src="${ip}${data.data.videoPath}" style="position: fixed;bottom: 200px;right: 20px;"></video>
+					`
+					var video=document.getElementById("video")
+					video.innerHTML+=html2
+				}
+			})
+			
+			window.addEventListener('scroll',function(){
+				if(window.pageYOffset>258){
+					video.classList.remove('box-hidden')
+				}else{
+					video.classList.add('box-hidden')
+				}
+			})
+			console.log(window)
+		</script>
+	</body>
+
+</html>

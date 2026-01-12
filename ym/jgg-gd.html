@@ -1,0 +1,229 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<style type="text/css">
+			.top{
+				width: 95%;
+				height: 40px;
+				margin: 20px auto;
+				margin-bottom: 0;
+			}
+			.top h4{
+				border-left: 2px solid red;
+				padding-left: 10px;
+				line-height: 30px;
+			}
+			.top_content{
+				display: flex;
+				flex-wrap: wrap;
+				width: 95%;
+				height: 180px;
+				background-color: #fff;
+				margin: 10px auto;
+				border-radius: 10px;
+				padding: 0;
+			}
+			.top_content li{
+				list-style: none;
+				flex: 30%;
+				margin-top: 6px;
+			}
+			.top_content a{
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				color: #000000;
+				font-size: 15px;
+			}
+			.top_content img{
+				width: 50px;
+				height: 50px;
+			}
+			.bottom-one button{
+				width: 90%;
+				border-radius: 30px;
+				margin: 10px auto;
+			}
+			.bottom-two button{
+				width: 90%;
+				border-radius: 30px;
+				margin: 10px auto;
+			}
+			.box-hidden{
+				display: none;
+			}
+			.mlist{
+				width: 95%;
+				height: 230px;
+				border-radius: 10px;
+				margin: 10px  auto;
+				padding: 0;
+			}
+			.mlist img{
+				width: 50px;
+				height: 50px;
+				
+				vertical-align: middle;
+			}
+			.mlist li{
+				width: 100%;
+				list-style: none;
+				border-radius: 10px;
+				margin-bottom: 10px;
+				background-color: #fff;
+				height: 70px;
+				line-height: 70px;
+			}
+			.mlist span{
+				color: #000000;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav" style="background-color: #fff;">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" style="color: gray;"></a>
+			<h1 class="mui-title">更多</h1>
+			<button type="button" class="mui-btn mui-btn-red mui-pull-right " id="out">切换</button>
+		</header>
+		<div class="mui-content">
+			<div id="one_list">
+				
+				<div class="top">
+					<h4>显示入口</h4>
+				</div>
+				<ul class="top_content">
+					<li>
+						<a href="#">
+							<span><img src="../img/kmlb.png" ></span>
+							<span style="color: red;">楷模列表</span>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<span><img src="../img/yxgs.png" ></span>
+							<span>英雄故事</span>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<span><img src="../img/sbyx.png" ></span>
+							<span>身边英雄</span>
+						</a>
+					</li>
+				</ul>
+				<div class="top">
+					<h4>隐藏入口</h4>
+				</div>
+				<ul class="top_content">
+					<li>
+						<a href="#">
+							<span><img src="../img/wzjz.png" ></span>
+							<span>物资捐赠</span>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<span><img src="../img/qzxq.png" ></span>
+							<span>群众需求</span>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<span><img src="../img/more.png" ></span>
+							<span>数据分析</span>
+						</a>
+					</li>
+				</ul>
+				<div class="bottom-one">
+					<button id="bj-one" style="margin-top: 100px;background-color: transparent;color: red;" type="button" class="mui-btn mui-btn-red mui-btn-block">编辑</button>
+				<a href="../index.html"><button style="background-color: red;" type="button" class="mui-btn mui-btn-red mui-btn-block">退出登录</button></a>
+				</div>
+			</div>
+			<div id="two_list" class="box-hidden">
+				<div class="top">
+					<h4>显示入口</h4>
+				</div>
+					<ul class="mlist">
+						<li>
+							<a href="#">
+								<span><img src="../img/kmlb.png" ></span>
+								<span>楷模列表</span>
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<span><img src="../img/yxgs.png" ></span>
+								<span>英雄故事</span>
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<span><img src="../img/sbyx.png" ></span>
+								<span>身边英雄</span>
+							</a>
+						</li>
+					</ul>
+					<div class="top">
+						<h4>隐藏入口</h4>
+					</div>
+					<ul class="mlist">
+						<li>
+							<a href="#">
+								<span><img src="../img/wzjz.png" ></span>
+								<span>物资捐赠</span>
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<span><img src="../img/qzxq.png" ></span>
+								<span>群众需求</span>
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<span><img src="../img/more.png" ></span>
+								<span>数据分析</span>
+							</a>
+						</li>
+					</ul>
+					<div class="bottom-two">
+						<button id="bj-two" style="margin-top: 100px;background-color: transparent;color: red;" type="button" class="mui-btn mui-btn-red mui-btn-block">编辑</button>
+					<a href="../index.html"><button style="background-color: red;" type="button" class="mui-btn mui-btn-red mui-btn-block">退出登录</button></a>
+					</div>
+				</div>
+				
+			</div>
+			
+			
+		</div>
+		<script src="../js/mui.min.js"></script>
+		<script type="text/javascript">
+			mui.init()
+			var one=document.getElementById("one_list")
+			var out=document.getElementById("out")
+			var two=document.getElementById("two_list")
+			out.addEventListener('click',function(){
+				one.classList.toggle('box-hidden')
+				two.classList.toggle('box-hidden')
+			});
+			
+			
+			
+			
+			
+			var bj=document.getElementById("bj-one")
+			var bottom=document.getElementsByClassName('bottom-one')
+			bj.addEventListener('click',function(){
+				bottom.className+='box-hidden'
+				
+			})
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,298 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport"
+			content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<style type="text/css">
+			.mui-segmented-control.mui-segmented-control-inverted .mui-control-item.mui-active {
+				color: red;
+				border-bottom: 2px solid red;
+			}
+
+			.mui-table-view {
+				width: 95%;
+				margin: 10px auto;
+				margin-top: 10px;
+				border-radius: 10px;
+				height: 70px;
+			}
+
+			.mui-table-view:after {
+				background-color: transparent;
+			}
+
+			.mui-table-view:before {
+				background-color: transparent;
+			}
+			.lb{
+				background-color: #fff;
+				width: 95%;
+				border-radius: 10px;
+				margin: 10px  auto;
+				padding: 0;
+			}
+			.mui-table-view-cell{
+				margin: 10px  auto;
+				background-color: transparent;
+			}
+			.btn{
+				position: fixed;
+				bottom: 50px;
+				right: 220px;
+				width: 100px;
+				height: 40px;
+				border-radius:15px;
+				background-color: red;
+			}
+			.box{
+				width: 90%;
+				height: 150px;
+				background-color: #fff;
+				margin: 20px  auto;
+				border-radius: 10px;
+				padding: 10px;
+			}
+			.bottom{
+				text-align: center;
+				margin-top: 10px;
+			}
+			.bottom button{
+				background-color: transparent;
+				border: 0;
+				color: red;
+			}
+				.mui-btn.mui-icon{
+					font-size: 20px;
+				}
+			.top{
+				height: 80px;
+				border-bottom: 1px solid #ccc;
+			}
+			.box-hidden{
+				display: none;
+			}
+			.wb{
+				background-color: rgba(204,204,204,.3);
+				border: 0;
+				margin-bottom: 5px;
+			}
+			.out{
+				margin-bottom: 5px;
+			}
+			.add{
+				width: 105%;
+				height: 150px;
+				background-color: #fff;
+				margin: 0 -10px;
+				padding: 10px;
+				border-radius: 10px;
+			}
+			.out{
+				width: 105%;
+				height: 150px;
+				background-color: #fff;
+				margin: 0 -10px;
+				padding: 10px;
+				border-radius: 10px;
+			}
+			.mui-bar-tab .mui-tab-item.mui-active{
+				color: red;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav" style="background-color: #fff;">
+			<h1 class="mui-title">学习心得</h1>
+		</header>
+		<div class="mui-content">
+			<div class="mui-segmented-control mui-segmented-control-inverted" style="background-color: #fff;">
+				<a class="mui-control-item mui-active" href="#item1">学习感言</a>
+				<a class="mui-control-item" href="#item2" >学习历史</a>
+			</div>
+			<div>
+				<div id="item1" class="mui-control-content mui-active">
+					<div id="dele">
+	
+					</div>
+					<button type="button" class="mui-btn mui-btn-red mui-btn btn">新建感言</button>
+				</div>
+				
+				<div id="item2" class="mui-control-content" style="margin-bottom: 60px;">
+						<div class="box" style="margin-bottom: 120px;">
+							<div class="top">
+								<h4>标题</h4>
+								<p>时间</p>
+								<p class="mui-ellipsis-2">内容</p>
+							</div>
+							<div class="bottom" id="bom" >
+								<button  id="tj"    type="button" class=" mui-btn mui-icon mui-icon-compose">添加笔记</button>
+								<div class="add box-hidden" id="add">
+									<div class="add-top">
+										<h4 style="color: red;float: left;font-weight: 400;">添加笔记</h4>
+										<div id="qx"  style="color: #ccc;float: right;">取消</div>
+									</div>
+									<textarea id="one" rows="" cols="" class="wb"></textarea>
+									<div><button  id="fb"  type="button" class="mui-btn mui-btn-red" style="float: right;">发布</button></div>
+								</div>
+								<div class="out box-hidden" id="out">
+									<div class="add-top">
+										<h4 style="float: left;font-weight: 400;">学习笔记</h4>
+										<div id="deleg"  style="color: red;float: right;">删除</div>
+									</div>
+									<textarea id="two" rows="" cols="" class="wb"></textarea>
+									<button  id="bj"  type="button" class="mui-btn mui-icon mui-icon-compose  " style="color: #F0AD4E;">编辑笔记</button>
+								</div>
+								
+							</div>
+							</div>
+					<div id="box">
+					
+					</div>
+				</div>
+				<nav class="mui-bar mui-bar-tab">
+					<a class="mui-tab-item " href="../ym/sdkm-sy.html">
+						<span class="mui-icon mui-icon-home"></span>
+						<span class="mui-tab-label">首页</span>
+					</a>
+					<a class="mui-tab-item" href="gy.html">
+						<span class="mui-icon mui-icon-phone" ></span>
+						<span class="mui-tab-label">公益活动</span>
+					</a>
+					<a class="mui-tab-item mui-active" href="xd-gy.html">
+						<span class="mui-icon mui-icon-email"></span>
+						<span class="mui-tab-label">心得</span>
+					</a>
+					<a class="mui-tab-item " href="数据分析.html">
+						<span class="mui-icon mui-icon-gear"></span>
+						<span class="mui-tab-label">数据分析</span>
+					</a>
+					<a  class="mui-tab-item">
+						<span class="mui-icon mui-icon-gear"></span>
+						<span class="mui-tab-label">我的</span>
+					</a>
+				</nav>
+			</div>
+			
+			<script src="../js/mui.min.js"></script>
+			<script src="../js/request.js" type="text/javascript" charset="utf-8"></script>
+			<script type="text/javascript">
+				mui.init()
+				mui('body').on('tap','.mui-tab-item',function(){
+					document.location.href=this.href
+				})
+				mui('#dele').on('tap','.mui-btn', function(event) {
+					var elem = this;
+					var li = elem.parentNode.parentNode;
+					// 点击后弹出询问框
+					mui.confirm('是否删除学习感言？', '提示', ['确认', '取消'], function(e) {
+						if (e.index == 0) {
+							li.parentNode.removeChild(li);
+						} else {
+							setTimeout(function() {
+								mui.swipeoutClose(li);
+							}, 0);
+						}
+					});
+				})
+				var ip=localStorage.getItem('ip')
+				request.get(ip+'/appModel/app-o/list',{
+					success:function(data){
+						for(var i=0;i<5;i++){
+							var html=`
+								<ul class="lb" id="deleet">
+								<li class="mui-table-view-cell">
+									<div class="mui-slider-right mui-disabled">
+										<a class=" mui-btn mui-btn-red">删除</a>
+									</div>
+									<div class="mui-slider-handle">
+										<h4>${data.rows[i].title}</h4>
+										<p class="mui-ellipsis-2">${data.rows[i].content}</p>
+									</div>
+								</li>
+								</ul>
+							`
+							document.getElementById("dele").innerHTML+=html
+						}
+					}
+				})
+				var tj=document.getElementById("tj")
+				var bom=document.getElementById("bom")
+				var add=document.getElementById("add")
+				var fb=document.getElementById("fb")
+				var qx=document.getElementById("qx")
+				var out=document.getElementById("out")
+				var one=document.getElementById("one")
+				var two=document.getElementById("two")
+				var bj=document.getElementById("bj")
+				var deleg=document.getElementById("deleg")
+				
+				tj.addEventListener('click',function(){
+					tj.classList.add('box-hidden')
+					add.classList.remove('box-hidden')
+				})
+				qx.addEventListener('click',function(){
+					add.classList.add('box-hidden')
+					tj.classList.remove('box-hidden')
+					one.value=''
+				})
+				fb.addEventListener('click',function(){
+					two.value=one.value
+					one.value=''
+					add.classList.add('box-hidden')
+					out.classList.remove('box-hidden')
+					two.disabled=true
+				})
+				bj.addEventListener('click',function(){
+					two.disabled=false
+				})
+				deleg.addEventListener('click',function(){
+					out.classList.add('box-hidden')
+					tj.classList.remove('box-hidden')
+				})
+				
+				
+				request.get(ip+'/appModel/app-o/list',{
+					success:function(data){
+						for(var i=0;i<5;i++){
+							var html2=`
+							<div class="box">
+								<div class="top">
+									<h4>标题</h4>
+									<p>时间</p>
+									<p class="mui-ellipsis-2">内容</p>
+								</div>
+								<div class="bottom" id="bom" >
+									<button  type="button" class=" mui-btn mui-icon mui-icon-compose">添加笔记</button>
+									<div class="add box-hidden" id="add">
+										<div class="add-top">
+											<h4 style="color: red;float: left;font-weight: 400;">添加笔记</h4>
+											<div   style="color: #ccc;float: right;">取消</div>
+										</div>
+										<textarea id="one" rows="" cols="" class="wb"></textarea>
+										<div><button    type="button" class="mui-btn mui-btn-red" style="float: right;">发布</button></div>
+									</div>
+									<div class="out box-hidden" id="out">
+										<div class="add-top">
+											<h4 style="float: left;font-weight: 400;">学习笔记</h4>
+											<div   style="color: red;float: right;">删除</div>
+										</div>
+										<textarea id="two" rows="" cols="" class="wb"></textarea>
+										<button    type="button" class="mui-btn mui-icon mui-icon-compose  " style="color: #F0AD4E;">编辑笔记</button>
+									</div>
+									
+								</div>
+								</div>
+							`
+							document.getElementById("box").innerHTML+=html2
+						}
+					}
+				})
+			</script>
+	</body>
+
+</html>
