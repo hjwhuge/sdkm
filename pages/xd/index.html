@@ -28,62 +28,75 @@
 			.mui-table-view:before {
 				background-color: transparent;
 			}
-			.lb{
+
+			.lb {
 				background-color: #fff;
 				width: 95%;
 				border-radius: 10px;
-				margin: 10px  auto;
+				margin: 10px auto;
 				padding: 0;
 			}
-			.mui-table-view-cell{
-				margin: 10px  auto;
+
+			.mui-table-view-cell {
+				margin: 10px auto;
 				background-color: transparent;
 			}
-			.btn{
+
+			#addBtn {
 				position: fixed;
-				bottom: 50px;
-				right: 220px;
+				bottom: 60px;
+				left: 50%;
+				transform: translateX(-50%);
 				width: 100px;
 				height: 40px;
-				border-radius:15px;
+				border-radius: 15px;
 				background-color: red;
 			}
-			.box{
+
+			.box {
 				width: 90%;
 				height: 150px;
 				background-color: #fff;
-				margin: 20px  auto;
+				margin: 20px auto;
 				border-radius: 10px;
 				padding: 10px;
 			}
-			.bottom{
+
+			.bottom {
 				text-align: center;
 				margin-top: 10px;
 			}
-			.bottom button{
+
+			.bottom button {
 				background-color: transparent;
 				border: 0;
 				color: red;
 			}
-				.mui-btn.mui-icon{
-					font-size: 20px;
-				}
-			.top{
+
+			.mui-btn.mui-icon {
+				font-size: 20px;
+			}
+
+			.top {
 				height: 80px;
 				border-bottom: 1px solid #ccc;
 			}
-			.box-hidden{
+
+			.box-hidden {
 				display: none;
 			}
-			.wb{
-				background-color: rgba(204,204,204,.3);
+
+			.wb {
+				background-color: rgba(204, 204, 204, .3);
 				border: 0;
 				margin-bottom: 5px;
 			}
-			.out{
+
+			.out {
 				margin-bottom: 5px;
 			}
-			.add{
+
+			.add {
 				width: 105%;
 				height: 150px;
 				background-color: #fff;
@@ -91,7 +104,8 @@
 				padding: 10px;
 				border-radius: 10px;
 			}
-			.out{
+
+			.out {
 				width: 105%;
 				height: 150px;
 				background-color: #fff;
@@ -99,7 +113,8 @@
 				padding: 10px;
 				border-radius: 10px;
 			}
-			.mui-bar-tab .mui-tab-item.mui-active{
+
+			.mui-bar-tab .mui-tab-item.mui-active {
 				color: red;
 			}
 		</style>
@@ -112,55 +127,107 @@
 		<div class="mui-content">
 			<div class="mui-segmented-control mui-segmented-control-inverted" style="background-color: #fff;">
 				<a class="mui-control-item mui-active" href="#item1">学习感言</a>
-				<a class="mui-control-item" href="#item2" >学习历史</a>
+				<a class="mui-control-item" href="#item2">学习历史</a>
 			</div>
 			<div>
 				<div id="item1" class="mui-control-content mui-active">
 					<div id="dele">
-	
+
 					</div>
-					<button type="button" class="mui-btn mui-btn-red mui-btn btn">新建感言</button>
+					<button type="button" class="mui-btn mui-btn-red mui-btn" id="addBtn">新建感言</button>
+				</div>
+
+				<div id="item2" class="mui-control-content" style="margin-bottom: 60px;">
+					<div class="box" style="margin-bottom: 120px;">
+						<div class="top">
+							<h4>标题</h4>
+							<p>时间</p>
+							<p class="mui-ellipsis-2">内容</p>
+						</div>
+						<div class="bottom" id="bom">
+							<button id="tj" type="button" class=" mui-btn mui-icon mui-icon-compose">添加笔记</button>
+							<div class="add box-hidden" id="add">
+								<div class="add-top">
+									<h4 style="color: red;float: left;font-weight: 400;">添加笔记</h4>
+									<div id="qx" style="color: #ccc;float: right;">取消</div>
+								</div>
+								<textarea id="one" rows="" cols="" class="wb"></textarea>
+								<div><button id="fb" type="button" class="mui-btn mui-btn-red"
+										style="float: right;">发布</button></div>
+							</div>
+							<div class="out box-hidden" id="out">
+								<div class="add-top">
+									<h4 style="float: left;font-weight: 400;">学习笔记</h4>
+									<div id="deleg" style="color: red;float: right;">删除</div>
+								</div>
+								<textarea id="two" rows="" cols="" class="wb"></textarea>
+								<button id="bj" type="button" class="mui-btn mui-icon mui-icon-compose  "
+									style="color: #F0AD4E;">编辑笔记</button>
+							</div>
+
+						</div>
+					</div>
+					<div id="box">
+
+					</div>
+				</div>
+				<div id="popover" class="mui-popover mui-popover-action">
+				  <div class="mui-input-row">
+				  	<label>Input</label>
+				  	<input type="text" placeholder="普通输入框">
+				  </div><div class="mui-input-row">
+				  	<label>Input</label>
+				  	<input type="text" placeholder="普通输入框">
+				  </div>
+				  
 				</div>
 				
-				<div id="item2" class="mui-control-content" style="margin-bottom: 60px;">
-						<div class="box" style="margin-bottom: 120px;">
-							<div class="top">
-								<h4>标题</h4>
-								<p>时间</p>
-								<p class="mui-ellipsis-2">内容</p>
-							</div>
-							<div class="bottom" id="bom" >
-								<button  id="tj"    type="button" class=" mui-btn mui-icon mui-icon-compose">添加笔记</button>
-								<div class="add box-hidden" id="add">
-									<div class="add-top">
-										<h4 style="color: red;float: left;font-weight: 400;">添加笔记</h4>
-										<div id="qx"  style="color: #ccc;float: right;">取消</div>
-									</div>
-									<textarea id="one" rows="" cols="" class="wb"></textarea>
-									<div><button  id="fb"  type="button" class="mui-btn mui-btn-red" style="float: right;">发布</button></div>
+				<a href="#picture" class="mui-btn mui-btn-primary ">打开actionsheet</a>
+				
+				<div id="picture" class="mui-popover mui-popover-action">
+					<ul class="mui-table-view" style="height: 300px;">
+							<li class="mui-table-view-cell">
+								<div class="mui-input-row">
+									<label>Input</label>
+									<input type="text" placeholder="普通输入框">
 								</div>
-								<div class="out box-hidden" id="out">
-									<div class="add-top">
-										<h4 style="float: left;font-weight: 400;">学习笔记</h4>
-										<div id="deleg"  style="color: red;float: right;">删除</div>
-									</div>
-									<textarea id="two" rows="" cols="" class="wb"></textarea>
-									<button  id="bj"  type="button" class="mui-btn mui-icon mui-icon-compose  " style="color: #F0AD4E;">编辑笔记</button>
+							</li>
+							<li class="mui-table-view-cell">
+								<div class="mui-input-row">
+									<label>Input</label>
+									<input type="text" placeholder="普通输入框">
 								</div>
-								
-							</div>
-							</div>
-					<div id="box">
-					
-					</div>
+							</li>
+							<li class="mui-table-view-cell">
+								<div class="mui-input-row">
+									<label>Input</label>
+									<input type="text" placeholder="普通输入框">
+								</div>
+							</li>
+						</ul>
+				    <!-- <ul class="mui-table-view">
+				        <li class="mui-table-view-cell">
+				            <a href="#">按钮1</a>
+				        </li>
+				        <li class="mui-table-view-cell">
+				            <a href="#">按钮2</a>
+				        </li>
+				    </ul>
+				    <ul class="mui-table-view">
+				        <li class="mui-table-view-cell">
+				            <a href="#picture"><b>取消</b></a>
+				        </li>
+				    </ul> -->
 				</div>
+
+				<a href="#popover" id="openPopover" class="mui-btn mui-btn-primary mui-btn-block">打开弹出菜单</a>
 				<nav class="mui-bar mui-bar-tab">
 					<a class="mui-tab-item " href="../sy/index.html">
 						<span class="mui-icon mui-icon-home"></span>
 						<span class="mui-tab-label">首页</span>
 					</a>
 					<a class="mui-tab-item" href="../gyhd/index.html">
-						<span class="mui-icon mui-icon-phone" ></span>
+						<span class="mui-icon mui-icon-phone"></span>
 						<span class="mui-tab-label">公益活动</span>
 					</a>
 					<a class="mui-tab-item mui-active" href="index.html">
@@ -171,21 +238,26 @@
 						<span class="mui-icon mui-icon-gear"></span>
 						<span class="mui-tab-label">数据分析</span>
 					</a>
-					<a  class="mui-tab-item">
+					<a class="mui-tab-item">
 						<span class="mui-icon mui-icon-gear"></span>
 						<span class="mui-tab-label">我的</span>
 					</a>
 				</nav>
 			</div>
-			
+
 			<script src="../../js/mui.min.js"></script>
 			<script src="../../js/request.js" type="text/javascript" charset="utf-8"></script>
 			<script type="text/javascript">
 				mui.init()
-				mui('body').on('tap','.mui-tab-item',function(){
-					document.location.href=this.href
+				mui('body').on('tap', '.mui-tab-item', function() {
+					document.location.href = this.href
 				})
-				mui('#dele').on('tap','.mui-btn', function(event) {
+				mui('#item1').on('tap','#addBtn',function(){
+				  console.log(666)
+				  mui("#picture").popover('toggle');
+				  // mui('.mui-popover').popover('toggle',document.getElementById("openPopover"));
+				}) 
+				mui('#dele').on('tap', '.mui-btn', function(event) {
 					var elem = this;
 					var li = elem.parentNode.parentNode;
 					// 点击后弹出询问框
@@ -199,67 +271,67 @@
 						}
 					});
 				})
-				var ip=localStorage.getItem('ip')
-				request.get(ip+'/appModel/app-o/list',{
-					success:function(data){
-						for(var i=0;i<5;i++){
-							var html=`
+				var ip = localStorage.getItem('ip')
+				request.get(ip + '/appModel/app-o/list', {
+					success: function(data) {
+						for (var i = 0; i < 5; i++) {
+							var html = `
 								<ul class="lb" id="deleet">
-								<li class="mui-table-view-cell">
-									<div class="mui-slider-right mui-disabled">
-										<a class=" mui-btn mui-btn-red">删除</a>
-									</div>
-									<div class="mui-slider-handle">
-										<h4>${data.rows[i].title}</h4>
-										<p class="mui-ellipsis-2">${data.rows[i].content}</p>
-									</div>
-								</li>
+									<li class="mui-table-view-cell">
+										<div class="mui-slider-right mui-disabled">
+											<a class="mui-btn mui-btn-red">删除</a>
+										</div>
+										<div class="mui-slider-handle">
+											<h4>${data.rows[i].title}</h4>
+											<p class="mui-ellipsis-2">${data.rows[i].content}</p>
+										</div>
+									</li>
 								</ul>
 							`
-							document.getElementById("dele").innerHTML+=html
+							document.getElementById("dele").innerHTML += html
 						}
 					}
 				})
-				var tj=document.getElementById("tj")
-				var bom=document.getElementById("bom")
-				var add=document.getElementById("add")
-				var fb=document.getElementById("fb")
-				var qx=document.getElementById("qx")
-				var out=document.getElementById("out")
-				var one=document.getElementById("one")
-				var two=document.getElementById("two")
-				var bj=document.getElementById("bj")
-				var deleg=document.getElementById("deleg")
-				
-				tj.addEventListener('click',function(){
+				var tj = document.getElementById("tj")
+				var bom = document.getElementById("bom")
+				var add = document.getElementById("add")
+				var fb = document.getElementById("fb")
+				var qx = document.getElementById("qx")
+				var out = document.getElementById("out")
+				var one = document.getElementById("one")
+				var two = document.getElementById("two")
+				var bj = document.getElementById("bj")
+				var deleg = document.getElementById("deleg")
+
+				tj.addEventListener('click', function() {
 					tj.classList.add('box-hidden')
 					add.classList.remove('box-hidden')
 				})
-				qx.addEventListener('click',function(){
+				qx.addEventListener('click', function() {
 					add.classList.add('box-hidden')
 					tj.classList.remove('box-hidden')
-					one.value=''
+					one.value = ''
 				})
-				fb.addEventListener('click',function(){
-					two.value=one.value
-					one.value=''
+				fb.addEventListener('click', function() {
+					two.value = one.value
+					one.value = ''
 					add.classList.add('box-hidden')
 					out.classList.remove('box-hidden')
-					two.disabled=true
+					two.disabled = true
 				})
-				bj.addEventListener('click',function(){
-					two.disabled=false
+				bj.addEventListener('click', function() {
+					two.disabled = false
 				})
-				deleg.addEventListener('click',function(){
+				deleg.addEventListener('click', function() {
 					out.classList.add('box-hidden')
 					tj.classList.remove('box-hidden')
 				})
-				
-				
-				request.get(ip+'/appModel/app-o/list',{
-					success:function(data){
-						for(var i=0;i<5;i++){
-							var html2=`
+
+
+				request.get(ip + '/appModel/app-o/list', {
+					success: function(data) {
+						for (var i = 0; i < 5; i++) {
+							var html2 = `
 							<div class="box">
 								<div class="top">
 									<h4>标题</h4>
@@ -288,7 +360,7 @@
 								</div>
 								</div>
 							`
-							document.getElementById("box").innerHTML+=html2
+							document.getElementById("box").innerHTML += html2
 						}
 					}
 				})
