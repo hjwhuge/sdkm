@@ -9,8 +9,8 @@ var request={
 		this.requestBase(url,'put',params)
 	},
 	requestBase:function(url,type,params){
-		var headers={'Content-Type':'application/json'}
-		var token=localStorage.getItem('token')
+		var headers = {'Content-Type':'application/json'}
+		var token = localStorage.getItem('token')
 		if(token){
 			headers['authorization']=token
 		}

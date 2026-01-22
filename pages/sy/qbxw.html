@@ -4,49 +4,61 @@
 	<head>
 		<meta charset="utf-8">
 		<title></title>
-		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="viewport"
+			content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 		<link href="../../css/mui.min.css" rel="stylesheet" />
 		<style type="text/css">
-			.kmlb{
+			.kmlb {
 				width: 95%;
 				padding: 0;
 				margin: 20px auto;
-				
+
 			}
-			.kmlb li{
+
+			.kmlb li {
 				background-color: #fff;
 				border-radius: 15px;
-				margin: 10px  auto;
+				margin: 10px auto;
 			}
-			.kmlb img{
+
+			.kmlb img {
 				width: 100px;
 				height: 100px;
 				margin-right: 10px;
 			}
-			.no2{
+
+			.no2 {
 				display: inline-block;
-				width: 45%;
+				width: 49%;
 				height: 250px;
 				border-radius: 20px;
 				background-color: #fff;
-				margin: 10px;
 			}
-			.no2 img{
+
+			.no2 img {
 				width: 80%;
 				height: 120px;
 				margin-left: 20px;
 				margin-top: 10px;
 				border-radius: 10px;
 			}
-			.content2{
+
+			.content2 {
 				background-color: #fff;
 				border-radius: 20px;
 			}
-			.wz{
-				margin-left:0px;
+
+			.wz {
+				margin-left: 0px;
 				text-align: center;
 			}
-			.box-hidden{
+			.wz .content {
+				overflow: hidden;
+				height: 106px;
+				padding: 0 6px;
+			}
+
+			.box-hidden {
 				display: none;
 			}
 		</style>
@@ -60,27 +72,28 @@
 		</header>
 		<div class="mui-content">
 			<div class="box-hidden" id="two">
-				
+
 			</div>
-			<ul class="kmlb "  id="lb">
+			<ul class="kmlb" id="lb">
 				
 			</ul>
-			<span id="biao" class="mui-icon mui-icon-arrowthinup" style="position: fixed;bottom: 50px;right: 20px;padding: 10px;border-radius: 30px;background-color: red;color: #fff;opacity: 0;" ></span>
-			
+			<span id="biao" class="mui-icon mui-icon-arrowthinup"
+				style="position: fixed;bottom: 50px;right: 20px;padding: 10px;border-radius: 30px;background-color: red;color: #fff;opacity: 0;"></span>
+
 		</div>
 		<script src="../../js/mui.min.js"></script>
 		<script src="../../js/request.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript">
 			mui.init()
-			var ip=localStorage.getItem('ip')
-			request.get(ip+'/appModel/app-o/list',{
-				success:function(data){
+			var ip = localStorage.getItem('ip')
+			request.get(ip + '/appModel/app-o/list', {
+				success: function(data) {
 					console.log(data)
-					var lb=document.getElementById("lb")
-					for(var i=0;i<data.total;i++){
-						
-						if(i%2==0){
-							lb.innerHTML+=`
+					var lb = document.getElementById("lb")
+					for (var i = 0; i < data.total; i++) {
+
+						if (i % 2 == 0) {
+							lb.innerHTML += `
 							<li class="mui-table-view-cell mui-media" onclick="lbxq(${data.rows[i].id})" >
 								<a href="javascript:;">
 									<img class="mui-media-object mui-pull-left mui-ellipsis" src="${ip}${data.rows[i].picPath}">
@@ -92,9 +105,9 @@
 								</a>
 							</li>
 							`
-						}else{
-							
-							lb.innerHTML+=`
+						} else {
+
+							lb.innerHTML += `
 							<li class="mui-table-view-cell mui-media" onclick="lbxq(${data.rows[i].id})">
 								<a href="javascript:;">
 									<img class="mui-media-object mui-pull-right mui-ellipsis" src="${ip}${data.rows[i].picPath}">
@@ -106,63 +119,63 @@
 								</a>
 							</li>
 							`
-							
+
 						}
-						
+
 					}
 				}
 			})
-			request.get(ip+'/appModel/app-o/list',{
-				success:function(data){
-					var two=document.getElementById("two")
-					for(var i=0;i<data.total;i++){
-						two.innerHTML+=`
+			request.get(ip + '/appModel/app-o/list', {
+				success: function(data) {
+					var two = document.getElementById("two")
+					for (var i = 0; i < data.total; i++) {
+						two.innerHTML += `
 							<div class="no2" onclick="lbxq(${data.rows[i].id})">
 								<div class="content2">
 									<img src="${ip}${data.rows[i].picPath}" >
-								<div class="wz">
-									<h4 class="mui-ellipsis-2">${data.rows[i].title}</h4>
-									<p>楷模姓名:${data.rows[i].modelName}</p>
-									<p style="overflow: hidden;height:100px;">${data.rows[i].content}</p>
-								</div>
-								
+									<div class="wz">
+										<h4 class="mui-ellipsis-2">${data.rows[i].title}</h4>
+										<p>楷模姓名:${data.rows[i].modelName}</p>
+										<p class="content">${data.rows[i].content}</p>
+									</div>
 								</div>
 							</div>
 						`
 					}
-					
+
 				}
-				
+
 			})
-			var out=document.getElementById("out")
-			out.addEventListener('click',function(){
+			var out = document.getElementById("out")
+			out.addEventListener('click', function() {
 				lb.classList.toggle('box-hidden')
 				two.classList.toggle('box-hidden')
 			})
-			function lbxq(e){
-				mui.openWindow('kmxq.html?id='+e,'lbxq')
+
+			function lbxq(e) {
+				mui.openWindow('kmxq.html?id=' + e, 'lbxq')
 			};
-			console.log(window)
-			var biao=document.getElementById("biao")
-			window.addEventListener('scroll',function(){
-				if(window.pageYOffset>1000){
-					biao.style.opacity=0.4
+			// console.log(window)
+			var biao = document.getElementById("biao")
+			window.addEventListener('scroll', function() {
+				if (window.pageYOffset > 1000) {
+					biao.style.opacity = 0.4
 				}
-				if(window.pageYOffset>4000){
-					biao.style.opacity=0.6
+				if (window.pageYOffset > 4000) {
+					biao.style.opacity = 0.6
 				}
-				if(window.pageYOffset==5616){
-				biao.style.opacity=1
-				}else if(window.pageYOffset==0){
-					biao.style.opacity=0
+				if (window.pageYOffset == 5616) {
+					biao.style.opacity = 1
+				} else if (window.pageYOffset == 0) {
+					biao.style.opacity = 0
 				}
 			})
-			biao.addEventListener('click',function(){
+			biao.addEventListener('click', function() {
 				window.scroll({
-					top:0,
-					behavior:'smooth'
+					top: 0,
+					behavior: 'smooth'
 				})
-				biao.style.opacity=0
+				biao.style.opacity = 0
 			})
 		</script>
 	</body>

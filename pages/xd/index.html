@@ -49,8 +49,10 @@
 				transform: translateX(-50%);
 				width: 100px;
 				height: 40px;
+				line-height: 28px;
 				border-radius: 15px;
 				background-color: red;
+				border: 1px solid red;
 			}
 
 			.box {
@@ -134,7 +136,7 @@
 					<div id="dele">
 
 					</div>
-					<button type="button" class="mui-btn mui-btn-red mui-btn" id="addBtn">新建感言</button>
+					<a href="#popover" id="addBtn" class="mui-btn mui-btn-primary">新建感言</a>
 				</div>
 
 				<div id="item2" class="mui-control-content" style="margin-bottom: 60px;">
@@ -171,56 +173,38 @@
 
 					</div>
 				</div>
+
+
+
 				<div id="popover" class="mui-popover mui-popover-action">
-				  <div class="mui-input-row">
-				  	<label>Input</label>
-				  	<input type="text" placeholder="普通输入框">
-				  </div><div class="mui-input-row">
-				  	<label>Input</label>
-				  	<input type="text" placeholder="普通输入框">
-				  </div>
-				  
-				</div>
-				
-				<a href="#picture" class="mui-btn mui-btn-primary ">打开actionsheet</a>
-				
-				<div id="picture" class="mui-popover mui-popover-action">
 					<ul class="mui-table-view" style="height: 300px;">
-							<li class="mui-table-view-cell">
-								<div class="mui-input-row">
-									<label>Input</label>
-									<input type="text" placeholder="普通输入框">
-								</div>
-							</li>
-							<li class="mui-table-view-cell">
-								<div class="mui-input-row">
-									<label>Input</label>
-									<input type="text" placeholder="普通输入框">
-								</div>
-							</li>
-							<li class="mui-table-view-cell">
-								<div class="mui-input-row">
-									<label>Input</label>
-									<input type="text" placeholder="普通输入框">
-								</div>
-							</li>
-						</ul>
-				    <!-- <ul class="mui-table-view">
-				        <li class="mui-table-view-cell">
-				            <a href="#">按钮1</a>
-				        </li>
-				        <li class="mui-table-view-cell">
-				            <a href="#">按钮2</a>
-				        </li>
-				    </ul>
-				    <ul class="mui-table-view">
-				        <li class="mui-table-view-cell">
-				            <a href="#picture"><b>取消</b></a>
-				        </li>
-				    </ul> -->
+						<li class="mui-table-view-cell">
+							<div class="mui-input-row">
+								<label>标题</label>
+								<input type="text" placeholder="请输入标题" id="title">
+							</div>
+						</li>
+						<li class="mui-table-view-cell">
+							<div class="mui-input-row">
+								<label>内容</label>
+								<input type="text" placeholder="请输入内容" id="content">
+							</div>
+						</li>
+						<li class="mui-table-view-cell">
+							<div class="mui-input-row">
+								<label>图片地址</label>
+								<input type="text" placeholder="请输入图片地址" id="picPath">
+							</div>
+						</li>
+						<li class="mui-table-view-cell">
+							<div class="mui-input-row">
+								<button type="button" class="mui-btn mui-btn-blue mui-btn-outlined"
+									id="addBtnClick">新增</button>
+							</div>
+						</li>
+					</ul>
 				</div>
 
-				<a href="#popover" id="openPopover" class="mui-btn mui-btn-primary mui-btn-block">打开弹出菜单</a>
 				<nav class="mui-bar mui-bar-tab">
 					<a class="mui-tab-item " href="../sy/index.html">
 						<span class="mui-icon mui-icon-home"></span>
@@ -249,14 +233,42 @@
 			<script src="../../js/request.js" type="text/javascript" charset="utf-8"></script>
 			<script type="text/javascript">
 				mui.init()
+
 				mui('body').on('tap', '.mui-tab-item', function() {
 					document.location.href = this.href
 				})
-				mui('#item1').on('tap','#addBtn',function(){
-				  console.log(666)
-				  mui("#picture").popover('toggle');
-				  // mui('.mui-popover').popover('toggle',document.getElementById("openPopover"));
-				}) 
+				mui('#popover').on('tap', '#addBtnClick', function() {
+
+					// var title = mui("#title")[0].value
+					var title = document.getElementById("title").value;
+					var content = document.getElementById("content").value;
+					var picPath = document.getElementById("picPath").value;
+
+
+					var formData = new FormData();
+					formData.append('title', title);
+					formData.append('content', content);
+					formData.append('picPath', picPath);
+					console.log(formData, title, content, picPath)
+					request.post(ip + '/appStudy/app/createStatement', {
+						data: {
+							title: title,
+							content: content,
+							picPath: picPath
+						},
+						success: function(data) {
+							console.log(data)
+						}
+					})
+					// request.post(ip + '/appStudy/app/createStatement', {
+					// 	data: formData,
+					// 	processData: false,
+					// 	contentType: false,
+					// 	success: function(data) {
+					// 		console.log(data)
+					// 	}
+					// })
+				})
 				mui('#dele').on('tap', '.mui-btn', function(event) {
 					var elem = this;
 					var li = elem.parentNode.parentNode;
@@ -272,23 +284,25 @@
 					});
 				})
 				var ip = localStorage.getItem('ip')
-				request.get(ip + '/appModel/app-o/list', {
+				request.get(ip + '/appStudy/app/statementList', {
 					success: function(data) {
-						for (var i = 0; i < 5; i++) {
-							var html = `
-								<ul class="lb" id="deleet">
-									<li class="mui-table-view-cell">
-										<div class="mui-slider-right mui-disabled">
-											<a class="mui-btn mui-btn-red">删除</a>
-										</div>
-										<div class="mui-slider-handle">
-											<h4>${data.rows[i].title}</h4>
-											<p class="mui-ellipsis-2">${data.rows[i].content}</p>
-										</div>
-									</li>
-								</ul>
-							`
-							document.getElementById("dele").innerHTML += html
+						if (data.rows && data.rows.length) {
+							for (var i = 0; i < 5; i++) {
+								var html = `
+									<ul class="lb" id="deleet">
+										<li class="mui-table-view-cell">
+											<div class="mui-slider-right mui-disabled">
+												<a class="mui-btn mui-btn-red">删除</a>
+											</div>
+											<div class="mui-slider-handle">
+												<h4>${data.rows[i].title}</h4>
+												<p class="mui-ellipsis-2">${data.rows[i].content}</p>
+											</div>
+										</li>
+									</ul>
+								`
+								document.getElementById("dele").innerHTML += html
+							}
 						}
 					}
 				})
@@ -328,7 +342,7 @@
 				})
 
 
-				request.get(ip + '/appModel/app-o/list', {
+				request.get(ip + '/appStudy/app/historyList', {
 					success: function(data) {
 						for (var i = 0; i < 5; i++) {
 							var html2 = `

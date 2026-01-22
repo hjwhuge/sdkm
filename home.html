@@ -1,0 +1,120 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.css" rel="stylesheet" />
+		<style type="text/css">
+			h3 {
+				text-align: center;
+			}
+			.kmgg {
+				display: flex;
+				background-color: #fff;
+				margin: 14px;
+				border-radius: 10px;
+			}
+			.kmgg .left {
+				padding: 10px;
+				margin-left: 20px;
+				border-right: 1px solid #ccc;
+			}
+			.kmgg .right {
+				padding: 10px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<h3>时代楷模</h3>
+		<marquee style="background: red;color: #fff;padding: 4px 0;">学习雷锋同志，弘扬雷锋精神</marquee>
+		
+		<div class="mui-slider">
+		  <div class="mui-slider-group mui-slider-loop" id="loop">
+				
+		  </div>
+		</div>
+		
+		<div class="kmgg">
+			<div class="left">
+				<h4>楷模</h4>
+				<h4>公共</h4>
+			</div>
+			<div class="right" id="right">
+				
+			</div>
+		</div>
+		
+		
+		<script src="js/mui.js"></script>
+		<script type="text/javascript">
+			mui.init()
+			var ip = "http://124.93.196.45:10091/Neusoft/times-model"
+			mui.ajax(ip + '/appNotice/app-o/loopMap',{
+				dataType:'json',//服务器返回json格式数据
+				type:'get',//HTTP请求类型
+				timeout:10000,//超时时间设置为10秒；
+				headers:{'Content-Type':'application/json'},	              
+				success:function(data){
+					//服务器返回响应，根据响应结果，分析是否登录成功；
+					// console.log(data, data.data)
+					var loop = document.getElementById("loop");
+					loop.innerHTML += `
+						<div class="mui-slider-item mui-slider-item-duplicate">
+							<a href="#">
+								<img style="height: 240px" src="${ip + data.data[data.data.length - 1].picPath}" />
+							</a>
+						</div>`
+					for(var i = 0; i < data.data.length; i++) {
+						// console.log(data.data[i].picPath)
+						loop.innerHTML += `
+							<div class="mui-slider-item"><a href="#"><img style="height: 240px" src="${ip + data.data[i].picPath}" /></a></div>
+						`
+					}
+					loop.innerHTML += `
+						<div class="mui-slider-item mui-slider-item-duplicate">
+							<a href="#">
+								<img style="height: 240px" src="${ip + data.data[0].picPath}" />
+							</a>
+						</div>`
+					//获得slider插件对象
+					var gallery = mui('.mui-slider');
+					gallery.slider({
+					  interval:2000//自动轮播周期，若为0则不自动播放，默认为0；
+					});
+				},
+				error:function(xhr,type,errorThrown){
+					//异常处理；
+					console.log(type);
+				}
+			});
+			
+			
+			mui.ajax(ip + '/appNotice/app-o/modelNotice',{
+				dataType:'json',//服务器返回json格式数据
+				type:'get',//HTTP请求类型
+				timeout:10000,//超时时间设置为10秒；
+				headers:{'Content-Type':'application/json'},	              
+				success:function(data){
+					//服务器返回响应，根据响应结果，分析是否登录成功；
+					console.log(data, data.data, data.data[0],data.data[0].title)
+					var right = document.getElementById("right")
+					right.innerHTML = `
+						<div class="wz">
+							<h4 style="padding-top: 7px;">${data.data[0].title}</h4>
+							<p class="mui-ellipsis-2">${data.data[0].content}</p>
+						</div>
+					`
+					
+				},
+				error:function(xhr,type,errorThrown){
+					//异常处理；
+					console.log(type);
+				}
+			});
+		</script>
+	</body>
+
+</html>

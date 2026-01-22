@@ -121,7 +121,7 @@
 		</header>
 
 		<div class="mui-content ">
-			<div class="">
+			<div class="content">
 				<marquee style="height: 30px;line-height: 30px;background-color: red;color: #fff;">学习雷锋同志，弘扬雷锋精神
 				</marquee>
 				<div id="slider" class="mui-slider" style="top: -5px;">
@@ -161,7 +161,6 @@
 						<div class="mui-indicator mui-active"></div>
 						<div class="mui-indicator"></div>
 						<div class="mui-indicator"></div>
-
 					</div>
 				</div>
 				<div class="kmgg" id="kmgg">
@@ -361,19 +360,18 @@
 			var kmgg = document.getElementById("kmgg")
 			request.get(ip + '/appNotice/app-o/modelNotice', {
 				success: function(data) {
-					for (var i = 0; i < 1; i++) {
-						var html = `
-							<div class="left">
-								<h3 style="color: red;">楷模</h3>
-								<h3>公告</h3>
-							</div>
-							<div class="wz">
-								<h4>${data.data[i].title}</h4>
-								<p class="mui-ellipsis-2">${data.data[i].content}</p>
-							</div>
-						`
-						kmgg.innerHTML += html
-					}
+					var element = data.data[0];
+					var html = `
+						<div class="left">
+							<h3 style="color: red;">楷模</h3>
+							<h3>公告</h3>
+						</div>
+						<div class="wz">
+							<h4>${element.title}</h4>
+							<p class="mui-ellipsis-2">${element.content}</p>
+						</div>
+					`
+					kmgg.innerHTML += html
 				}
 			})
 			
@@ -422,6 +420,7 @@
 			// 回到顶部按钮
 			var biao = document.getElementById("biao")
 			window.addEventListener('scroll', function() {
+				console.log(window.pageYOffset)
 				if (window.pageYOffset >= 1000) {
 					biao.style.opacity = 0.4
 				}
@@ -436,12 +435,11 @@
 					biao.style.opacity = 0
 				}
 			})
-			biao.addEventListener('click', function() {
-				window.scroll({
-					top: 0,
-					behavior: 'smooth'
-				})
-
+			mui('.content').on('tap','#biao',function(){
+			  window.scroll({
+			  	top: 0,
+			  	behavior: 'smooth'
+			  })
 			})
 		</script>
 	</body>
