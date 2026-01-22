@@ -237,6 +237,8 @@
 				mui('body').on('tap', '.mui-tab-item', function() {
 					document.location.href = this.href
 				})
+				
+				// 学习感言功能
 				mui('#popover').on('tap', '#addBtnClick', function() {
 
 					// var title = mui("#title")[0].value
@@ -244,31 +246,27 @@
 					var content = document.getElementById("content").value;
 					var picPath = document.getElementById("picPath").value;
 
-
 					var formData = new FormData();
 					formData.append('title', title);
 					formData.append('content', content);
 					formData.append('picPath', picPath);
-					console.log(formData, title, content, picPath)
+					// console.log(formData, title, content, picPath)
+					
 					request.post(ip + '/appStudy/app/createStatement', {
-						data: {
-							title: title,
-							content: content,
-							picPath: picPath
-						},
+						data: formData,
+						processData: false,
+						contentType: false,
 						success: function(data) {
-							console.log(data)
+							// console.log(data)
+							mui.toast(data.msg)
+							
+							mui('#popover').popover('toggle');
 						}
 					})
-					// request.post(ip + '/appStudy/app/createStatement', {
-					// 	data: formData,
-					// 	processData: false,
-					// 	contentType: false,
-					// 	success: function(data) {
-					// 		console.log(data)
-					// 	}
-					// })
 				})
+				function GoDetails(w){
+					mui.openWindow('gyxq.html?id='+w)
+				}
 				mui('#dele').on('tap', '.mui-btn', function(event) {
 					var elem = this;
 					var li = elem.parentNode.parentNode;
@@ -289,7 +287,7 @@
 						if (data.rows && data.rows.length) {
 							for (var i = 0; i < 5; i++) {
 								var html = `
-									<ul class="lb" id="deleet">
+									<ul class="lb" id="deleet" onclick="GoDetails(${data.rows[i].id})">
 										<li class="mui-table-view-cell">
 											<div class="mui-slider-right mui-disabled">
 												<a class="mui-btn mui-btn-red">删除</a>
@@ -306,6 +304,9 @@
 						}
 					}
 				})
+				
+				
+				// 学习历史功能
 				var tj = document.getElementById("tj")
 				var bom = document.getElementById("bom")
 				var add = document.getElementById("add")
@@ -344,38 +345,41 @@
 
 				request.get(ip + '/appStudy/app/historyList', {
 					success: function(data) {
-						for (var i = 0; i < 5; i++) {
-							var html2 = `
-							<div class="box">
-								<div class="top">
-									<h4>标题</h4>
-									<p>时间</p>
-									<p class="mui-ellipsis-2">内容</p>
-								</div>
-								<div class="bottom" id="bom" >
-									<button  type="button" class=" mui-btn mui-icon mui-icon-compose">添加笔记</button>
-									<div class="add box-hidden" id="add">
-										<div class="add-top">
-											<h4 style="color: red;float: left;font-weight: 400;">添加笔记</h4>
-											<div   style="color: #ccc;float: right;">取消</div>
-										</div>
-										<textarea id="one" rows="" cols="" class="wb"></textarea>
-										<div><button    type="button" class="mui-btn mui-btn-red" style="float: right;">发布</button></div>
+						var str = ""
+						for (var i = 0; i < data.rows.length; i++) {
+							const element = data.rows[i]
+							str += `
+								<div class="box">
+									<div class="top">
+										<h4>${element.title}</h4>
+										<p>${element.readTime}</p>
+										<p class="mui-ellipsis-2">${element.content}</p>
 									</div>
-									<div class="out box-hidden" id="out">
-										<div class="add-top">
-											<h4 style="float: left;font-weight: 400;">学习笔记</h4>
-											<div   style="color: red;float: right;">删除</div>
+									<div class="bottom" id="bom" >
+										<button  type="button" class=" mui-btn mui-icon mui-icon-compose">添加笔记</button>
+										<div class="add box-hidden" id="add">
+											<div class="add-top">
+												<h4 style="color: red;float: left;font-weight: 400;">添加笔记</h4>
+												<div   style="color: #ccc;float: right;">取消</div>
+											</div>
+											<textarea id="one" rows="" cols="" class="wb"></textarea>
+											<div><button    type="button" class="mui-btn mui-btn-red" style="float: right;">发布</button></div>
 										</div>
-										<textarea id="two" rows="" cols="" class="wb"></textarea>
-										<button    type="button" class="mui-btn mui-icon mui-icon-compose  " style="color: #F0AD4E;">编辑笔记</button>
+										<div class="out box-hidden" id="out">
+											<div class="add-top">
+												<h4 style="float: left;font-weight: 400;">学习笔记</h4>
+												<div   style="color: red;float: right;">删除</div>
+											</div>
+											<textarea id="two" rows="" cols="" class="wb"></textarea>
+											<button    type="button" class="mui-btn mui-icon mui-icon-compose  " style="color: #F0AD4E;">编辑笔记</button>
+										</div>
+										
 									</div>
-									
-								</div>
 								</div>
 							`
-							document.getElementById("box").innerHTML += html2
 						}
+						
+						document.getElementById("box").innerHTML = str
 					}
 				})
 			</script>
